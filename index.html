@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Ti Morenito❤️</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --main-color: #ff4b6e;
+        }
+
+        body {
+            background-color: #fff0f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Corazones flotando */
+        .heart {
+            position: absolute;
+            color: var(--main-color);
+            font-size: 1.5rem;
+            animation: float 5s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-800px) scale(0.5); opacity: 0; }
+        }
+
+        /* Contador */
+        .counter {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--main-color);
+        }
+
+       /* COLLAGE GRID */
+.collage {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+}
+
+.collage-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    aspect-ratio: 1/1; /* Mantiene proporción cuadrada adaptable */
+}
+
+.collage-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que se recorten bien sin deformarse */
+    transition: transform 0.3s ease;
+}
+
+.collage-item img:hover {
+    transform: scale(1.1);
+}
+
+        /* Frases */
+        .quote {
+    background: #ffffffcc;
+    border-radius: 15px;
+    padding: 0.8rem;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #333;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    aspect-ratio: 1/1; /* Para que se vea igual que las imágenes */
+}
+
+
+        .quote:hover {
+            background: #ffe4ec;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Música de fondo -->
+  <audio id="bg-music" autoplay loop muted>
+    <source src="img/buscandote.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+</audio>
+
+    <!-- Corazones -->
+    <div id="hearts-container"></div>
+
+    <div class="container text-center py-5">
+        <h1 class="mb-3">Para Mi Amor ❤️</h1>
+        <p class="lead">Desde que estamos juntos han pasado:</p>
+        <div class="counter" id="days-counter"></div>
+
+        <p class="mt-4">"Eres mi lugar favorito para estar en el mundo"</p>
+
+        <!-- Collage dinámico -->
+        <div class="collage mt-5" id="collage-container"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+   <script>
+window.addEventListener("load", () => {
+    const music = document.getElementById("bg-music");
+    // Intento quitar mute después de que cargue la página
+    setTimeout(() => {
+        music.muted = false;
+        music.play().catch(err => console.log("Autoplay bloqueado:", err));
+    }, 500);
+});
+</script>
+   <script>
+        // Contador de días
+        const startDate = new Date("2020-12-17"); 
+        const today = new Date();
+        const daysTogether = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+        document.getElementById("days-counter").textContent = `${daysTogether} días juntos`;
+
+        // Corazones animados - Más corazones
+const containerHearts = document.getElementById("hearts-container");
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 2 + 1) + "rem"; // Tamaño aleatorio
+    heart.style.animationDuration = Math.random() * 2 + 2 + "s"; // Velocidad aleatoria
+    heart.textContent = "❤️";
+    containerHearts.appendChild(heart);
+    setTimeout(() => heart.remove(), 5000);
+}, 200); // Más corazones (cada 200ms en lugar de 500ms)
+
+
+        // Lista de fotos (43 URLs)
+        const fotos = [
+            "img/IMG_20221117_122210.jpg",
+            "img/IMG_20240915_172048_481.webp",
+            "img/IMG_20240921_124922_896_DIS.jpg",
+            "img/IMG_20241110_223333_455.webp",
+            "img/IMG_20241110_235527_169.webp",
+            "img/IMG_20250715_200245_494_LL.jpg",
+            "img/IMG-20210930-WA0029.jpg",
+            "img/IMG-20211110-WA0030.jpg",
+            "img/IMG-20211110-WA0032.jpg",
+            "img/IMG-20220116-WA0017.jpg",
+            "img/IMG-20220712-WA0023 1.jpg",
+            "img/IMG-20221005-WA0034.jpg",
+            "img/IMG-20221107-WA0094.jpg",
+            "img/IMG-20221128-WA0057.jpg",
+            "img/IMG-20231119-WA0007.jpg",
+            "img/IMG-20231119-WA0012.jpg",
+            "img/IMG-20231222-WA0002.jpg",
+            "img/IMG-20231224-WA0041.jpg",
+            "img/IMG-20231230-WA0023.jpg",
+            "img/IMG-20231230-WA0024.jpg",
+            "img/IMG-20240127-WA0017.jpg",
+            "img/IMG-20240127-WA0020.jpg",
+            "img/IMG-20240320-WA0104.jpg",
+            "img/IMG-20240629-WA0135.jpg",
+            "img/IMG-20240908-WA0019.jpg",
+            "img/IMG-20241123-WA0080.jpg",
+            "img/IMG-20241128-WA0083.jpg",
+            "img/IMG-20241208-WA0081.jpg",
+            "img/IMG-20241217-WA0043.jpg",
+            "img/IMG-20250203-WA0086.jpg",
+            "img/IMG-20250203-WA0091.jpg",
+            "img/IMG-20250203-WA0103.jpg",
+            "img/IMG-20250629-WA0003.jpg",
+            "img/IMG-20250629-WA0009.jpg",
+            "img/received_714648632535726.jpeg",
+            "img/received_3859341967438439.jpeg",
+            "img/Screenshot_20210316_222849.jpg",
+            "img/Snapchat-539676508.jpg",
+            "img/SquareQuick_202291802646377.jpg",
+            "img/foto.jpeg",
+            "img/WhatsApp Image 2023-09-04 at 4.03.37 PM (1).jpeg",
+            "img/WhatsApp Image 2023-09-17 at 4.27.08 PM.jpeg",
+            "img/WhatsApp Image 2023-09-25 at 9.57.18 PM.jpeg"
+        ];
+
+        // Frases románticas
+        const frases = [
+            "Tú eres mi felicidad en cada segundo del día",
+            "Nuestro amor es mi lugar seguro",
+            "A tu lado todo es perfecto",
+            "Eres mi razón para sonreír",
+            "Mi mundo cambió desde que llegaste",
+            "Gracias por existir en mi vida",
+            "Contigo todo tiene sentido"
+        ];
+
+        // Mezclar fotos y frases
+        const elementos = [
+            ...fotos.map(f => ({ tipo: "foto", contenido: f })),
+            ...frases.map(f => ({ tipo: "frase", contenido: f }))
+        ];
+        elementos.sort(() => Math.random() - 0.5);
+
+        // Insertar en collage
+        const collageContainer = document.getElementById("collage-container");
+        elementos.forEach(item => {
+            const div = document.createElement("div");
+            div.classList.add("collage-item");
+
+            if (item.tipo === "foto") {
+                div.innerHTML = `<img src="${item.contenido}" alt="Foto">`;
+            } else {
+                div.innerHTML = `<div class="quote">"${item.contenido}"</div>`;
+            }
+
+            collageContainer.appendChild(div);
+        });
+    </script>
+
+</body>
+</html>
